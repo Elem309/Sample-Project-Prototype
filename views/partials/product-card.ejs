@@ -1,0 +1,11 @@
+<li class="product-card">
+  <img
+    src="https://via.placeholder.com/200x200"
+    alt="<%= product.name %>"
+    width="100%"
+  />
+  <h3><%= product.name %></h3>
+  <p class="price">$<%= product.price.toFixed(2) %></p>
+  <p class="price"><%= product.category %></p>
+  <a href="/products/<%= product.id %>" class="btn">View Details</a>
+</li>

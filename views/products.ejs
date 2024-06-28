@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products Page</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        overflow: hidden;
+      }
+
+      /* Product grid */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        gap: 20px;
+        list-style: none;
+        padding: 0;
+      }
+
+      .product-card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-card img {
+        max-width: 100%;
+        border-radius: 5px;
+      }
+
+      .product-card h3 {
+        margin-top: 10px;
+        font-size: 1.2rem;
+      }
+
+      .product-card .price {
+        font-size: 1.1rem;
+        color: #888;
+        margin-top: 5px;
+      }
+      header {
+        background: #333;
+        color: #fff;
+        padding-top: 30px;
+        min-height: 70px;
+        border-bottom: #5e5e5e 3px solid;
+      }
+
+      header a {
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+
+      header ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        float: right;
+        margin-right: 20px;
+      }
+
+      header li {
+        display: inline;
+        padding: 0 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Awesome Ecommerce Store</h1>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/products">Products</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <h1>Our Products</h1>
+        <div style="display: flex; justify-content: center">
+          <input
+            type="text"
+            placeholder="Eg: Phones , Laptop"
+            id="searchInput"
+          />
+          <button
+            onclick="function handleSeach(){
+
+            window.location.href =`/products/${document.getElementById('searchInput').value}`
+          };
+          handleSeach()"
+            style="background-color: #5e5e5e; border-radius: 10px; padding: 1em"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div
+          style="
+            height: 100vh;
+            display: <%= display %>;
+            justify-content: center;
+          "
+        >
+          <h1 style="margin-top: auto; margin-bottom: auto"><%= message %></h1>
+        </div>
+        <h2>Total Pruducts ( <%= length %> )</h2>
+        <ul class="product-grid">
+          <% products.forEach(product => { %> <%-
+          include('partials/product-card', { product: product }) %> <% }); %>
+        </ul>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Ecommerce Store. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
